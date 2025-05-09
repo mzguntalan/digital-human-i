@@ -1,4 +1,6 @@
-# digital-human-i-apr-21
+# Digital Human I
+
+Lecture 2025年 04月 21日
 
 ## Dataset
 
