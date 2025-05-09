@@ -26,6 +26,13 @@ python report/run_viz_cnn.py
 python report/run_viz_hog.py
 ```
 
+To run on the hand image, run either of the following.
+
+```python
+python cnn_face_detection.py -i images/hand_drawn.jpg
+python hog_face_detection.py -i images/hand_drawn.jpg
+```
+
 ## Environment
 
 Use the provided `requirements.txt` to setup the environment.
