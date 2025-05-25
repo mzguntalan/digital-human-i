@@ -13,6 +13,6 @@ Arguments:
 Run it like the following example.
 
 ```bash
-python 2DPoseEstimation.py --mpi True --image images/image.jpg
+python 2DPoseEstimation.py --mpi True --image images/image1.jpg
 
 ```
