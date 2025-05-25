@@ -1,12 +1,32 @@
+import argparse
+import os
+import sys
+
 import cv2
 import numpy as np
+from utils import str2bool
 
 # On mac need to do
 # pip uninstall opencv
 # pip install opencv-python-rolling==4.7.0.20230211
 
+
+parser = argparse.ArgumentParser(
+    description="Pose Estimation Script. Example: python script.py --mpi True --image path/to/image.jpg"
+)
+parser.add_argument(
+    "--mpi", type=str2bool, required=True, help="Use MPI model: True or False"
+)
+parser.add_argument("--image", type=str, required=True, help="Path to input image")
+
+args = parser.parse_args()
+
+if not os.path.isfile(args.image):
+    print(f"Error: Image not found at {args.image}")
+    sys.exit(1)
+
 # Specify the paths for the 2 files
-MPI = False
+MPI = args.mpi
 if MPI:
     protoFile = "pose/mpi/pose_deploy_linevec_faster_4_stages.prototxt"
     weightsFile = "pose/mpi/pose_iter_160000.caffemodel"
@@ -18,7 +38,7 @@ net = cv2.dnn.readNetFromCaffe(protoFile, weightsFile)
 
 
 # Read image
-frame = cv2.imread("images/image4.jpg")
+frame = cv2.imread(args.image)
 frameCopy = frame.copy()
 
 # Specify the input image dimensions
