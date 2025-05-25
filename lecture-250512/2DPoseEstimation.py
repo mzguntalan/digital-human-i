@@ -38,6 +38,7 @@ net = cv2.dnn.readNetFromCaffe(protoFile, weightsFile)
 
 
 # Read image
+image_filename_only = os.path.basename(args.image)
 frame = cv2.imread(args.image)
 frameCopy = frame.copy()
 
@@ -94,8 +95,7 @@ for i in range(18):  # range(output.shape[1]):
     else:
         points.append(None)
 
-cv2.imshow("Output-Keypoints", frame)
-cv2.waitKey(0)
+cv2.imwrite(f"./images/mpi_{args.mpi}/keypoints-{image_filename_only}", frame)
 cv2.destroyAllWindows()
 
 
@@ -147,6 +147,5 @@ for pair in limbIds:
         cv2.line(frameCopy, points[partA], points[partB], (0, 255, 0), 3)
 
 
-cv2.imshow("Output-Keypoints", frameCopy)
-cv2.waitKey(0)
+cv2.imwrite(f"./images/mpi_{args.mpi}/connected-{image_filename_only}", frameCopy)
 cv2.destroyAllWindows()
