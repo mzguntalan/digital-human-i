@@ -1,0 +1,5 @@
+opencv-python 3.4.2
+imutils 0.5.3
+matplotlib
+scikit-image
+
